@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Galería Interactiva de Fotos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #addImage {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        #addImage:hover {
+            background-color: #218838;
+        }
+
+        #gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        #gallery img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        #gallery img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Galería Interactiva de Fotos</h1>
+    <button id="addImage">Insertar Imagen</button>
+
+    <div id="gallery"></div>
+
+    <script>
+        const imagenes = [
+            "https://picsum.photos/id/1015/200/150",
+            "https://picsum.photos/id/1025/200/150",
+            "https://picsum.photos/id/1003/200/150",
+            "https://picsum.photos/id/1062/200/150",
+            "https://picsum.photos/id/1042/200/150",
+            "https://picsum.photos/id/1069/200/150"
+        ];
+
+        document.getElementById('addImage').addEventListener('click', function() {
+            const gallery = document.getElementById('gallery');
+            const img = document.createElement('img');
+            const randomIndex = Math.floor(Math.random() * imagenes.length);
+            img.src = imagenes[randomIndex];
+            gallery.appendChild(img);
+        });
+    </script>
+
+</body>
+</html>
